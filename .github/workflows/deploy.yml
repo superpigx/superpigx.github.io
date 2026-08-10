@@ -44,9 +44,9 @@ jobs:
       # 修复：Hugo 0.157 中 Language 对象移除了 Locale / Direction 字段
       - name: Patch theme for Hugo 0.157
         run: |
-          # .Site.Language.Locale -> .Language.Lang
-          grep -rl -- 'Site.Language.Locale' themes/hugo-theme-stack/layouts | while read f; do
-            sed -i 's/\.Site\.Language\.Locale/.Language.Lang/g' "$f"
+          # 任意 .Language.Locale / Site.Language.Locale -> .Language.Lang
+          grep -rl -- 'Language.Locale' themes/hugo-theme-stack/layouts | while read f; do
+            sed -i 's/\.Language\.Locale/.Language.Lang/g' "$f"
           done
           # .Language.Direction -> 字面量 "ltr"（中文站点方向为从左至右）
           grep -rl -- '.Language.Direction' themes/hugo-theme-stack/layouts | while read f; do
