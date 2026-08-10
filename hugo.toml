@@ -1,0 +1,94 @@
+baseURL = "https://username.github.io/"
+languageCode = "zh-CN"
+title = "我的博客"
+theme = "hugo-theme-stack"
+
+# 是否启用 GitInfo（可选）
+enableGitInfo = false
+
+# 默认内容语言
+defaultContentLanguage = "zh-CN"
+
+# 摘要长度
+summaryLength = 30
+
+# 分页
+paginate = 5
+
+# 主题配色，可选：light / dark / auto
+[params]
+  # 站点描述
+  description = "记录技术与生活的个人博客"
+  # 默认主题：auto 跟随系统
+  defaultTheme = "auto"
+  # 代码块是否显示复制按钮
+  displayCodeCopyButton = true
+
+  [params.sidebar]
+    # 侧边栏头像
+    avatar = ""
+    # 侧边栏是否固定
+    sticky = true
+
+  [params.article]
+    # 文章内显示字数
+    showWordCount = true
+    # 文章内显示阅读时长
+    showReadingTime = true
+    # 显示日期更新
+    showDateUpdated = true
+
+  [params.comments]
+    # 使用 Giscus 评论（基于 GitHub Discussions，免费）
+    enabled = false
+    # provider = "giscus"
+    # [params.comments.giscus]
+    #   repo = "username/repo"
+    #   repoId = ""
+    #   category = "Announcements"
+    #   categoryId = ""
+    #   mapping = "pathname"
+    #   lightTheme = "light"
+    #   darkTheme = "dark"
+
+# 菜单
+[[menu.main]]
+  identifier = "home"
+  name = "首页"
+  url = "/"
+  weight = 1
+
+[[menu.main]]
+  identifier = "posts"
+  name = "文章"
+  url = "/posts/"
+  weight = 2
+
+[[menu.main]]
+  identifier = "about"
+  name = "关于"
+  url = "/about/"
+  weight = 3
+
+# 社交链接（侧边栏显示）
+[[params.social]]
+  name = "GitHub"
+  url = "https://github.com/username"
+  icon = "brand-github"
+
+[markup]
+  [markup.highlight]
+    noClasses = false
+    lineNos = false
+    lineNumbersInTable = false
+    codeFences = true
+    guessSyntax = true
+
+[outputFormats]
+[mediaTypes]
+
+# 部署到 GitHub Pages
+[deployment]
+  [[deployment.targets]]
+    name = "github"
+    URL = "git@github.com:username/username.github.io.git"
