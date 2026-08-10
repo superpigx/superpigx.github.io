@@ -23,8 +23,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      HUGO_VERSION: 0.157.0
-      THEME_VERSION: v4.0.3
+      HUGO_VERSION: 0.164.0
+      THEME_VERSION: v8.0
     steps:
       - name: Install Hugo CLI
         run: |
@@ -36,22 +36,10 @@ jobs:
         with:
           fetch-depth: 0
 
-      # 云端拉取指定版本的 Stack 主题（不依赖本地 submodule）
+      # 云端拉取指定版本的 PaperMod 主题
       - name: Fetch theme
         run: |
-          git clone --depth 1 --branch ${THEME_VERSION} https://github.com/CaiJimmy/hugo-theme-stack.git themes/hugo-theme-stack
-
-      # 修复：Hugo 0.157 中 Language 对象移除了 Locale / Direction 字段
-      - name: Patch theme for Hugo 0.157
-        run: |
-          # 任意 .Language.Locale / Site.Language.Locale -> .Language.Lang
-          grep -rl -- 'Language.Locale' themes/hugo-theme-stack/layouts | while read f; do
-            sed -i 's/\.Language\.Locale/.Language.Lang/g' "$f"
-          done
-          # .Language.Direction -> 字面量 "ltr"（中文站点方向为从左至右）
-          grep -rl -- '.Language.Direction' themes/hugo-theme-stack/layouts | while read f; do
-            sed -i 's/\.Language\.Direction/"ltr"/g' "$f"
-          done
+          git clone --depth 1 --branch ${THEME_VERSION} https://github.com/adityatelange/hugo-PaperMod.git themes/PaperMod
 
       - name: Setup Pages
         id: pages
