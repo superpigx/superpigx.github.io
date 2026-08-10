@@ -6,9 +6,6 @@ theme = "hugo-theme-stack"
 # 是否启用 GitInfo（可选）
 enableGitInfo = false
 
-# 默认内容语言
-defaultContentLanguage = "zh-CN"
-
 # 摘要长度
 summaryLength = 30
 
