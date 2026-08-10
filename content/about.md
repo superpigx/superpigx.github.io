@@ -9,4 +9,4 @@ draft: false
 这里记录我的技术学习与生活中的一些思考。
 
 - 邮箱：you@example.com
-- GitHub：[@username](https://github.com/username)
+- GitHub：[@superpigx](https://github.com/superpigx)

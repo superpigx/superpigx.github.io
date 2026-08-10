@@ -1,4 +1,4 @@
-baseURL = "https://username.github.io/"
+baseURL = "https://superpigx.github.io/"
 languageCode = "zh-CN"
 title = "我的博客"
 theme = "hugo-theme-stack"
@@ -43,7 +43,7 @@ paginate = 5
     enabled = false
     # provider = "giscus"
     # [params.comments.giscus]
-    #   repo = "username/repo"
+    #   repo = "superpigx/superpigx.github.io"
     #   repoId = ""
     #   category = "Announcements"
     #   categoryId = ""
@@ -73,7 +73,7 @@ paginate = 5
 # 社交链接（侧边栏显示）
 [[params.social]]
   name = "GitHub"
-  url = "https://github.com/username"
+  url = "https://github.com/superpigx"
   icon = "brand-github"
 
 [markup]
@@ -91,4 +91,4 @@ paginate = 5
 [deployment]
   [[deployment.targets]]
     name = "github"
-    URL = "git@github.com:username/username.github.io.git"
+    URL = "git@github.com:superpigx/superpigx.github.io.git"

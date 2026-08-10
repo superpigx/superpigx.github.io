@@ -33,12 +33,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
+          submodules: recursive
           fetch-depth: 0
-
-      # 云端拉取 Stack 主题（无需本地 submodule）
-      - name: Fetch theme
-        run: |
-          git clone --depth 1 https://github.com/CaiJimmy/hugo-theme-stack.git themes/hugo-theme-stack
 
       - name: Setup Pages
         id: pages
