@@ -24,6 +24,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       HUGO_VERSION: 0.157.0
+      THEME_VERSION: v4.0.3
     steps:
       - name: Install Hugo CLI
         run: |
@@ -33,8 +34,19 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v5
         with:
-          submodules: recursive
           fetch-depth: 0
+
+      # 云端拉取指定版本的 Stack 主题（不依赖本地 submodule）
+      - name: Fetch theme
+        run: |
+          git clone --depth 1 --branch ${THEME_VERSION} https://github.com/CaiJimmy/hugo-theme-stack.git themes/hugo-theme-stack
+
+      # 修复：Hugo 0.157 已移除 .Site.Language.Locale，改用 .Language.Lang
+      - name: Patch theme for Hugo 0.157
+        run: |
+          grep -rl 'Site.Language.Locale' themes/hugo-theme-stack/layouts | while read f; do
+            sed -i 's/\.Site\.Language\.Locale/.Language.Lang/g' "$f"
+          done
 
       - name: Setup Pages
         id: pages
