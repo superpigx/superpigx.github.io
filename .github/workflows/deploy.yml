@@ -41,11 +41,16 @@ jobs:
         run: |
           git clone --depth 1 --branch ${THEME_VERSION} https://github.com/CaiJimmy/hugo-theme-stack.git themes/hugo-theme-stack
 
-      # 修复：Hugo 0.157 已移除 .Site.Language.Locale，改用 .Language.Lang
+      # 修复：Hugo 0.157 中 Language 对象移除了 Locale / Direction 字段
       - name: Patch theme for Hugo 0.157
         run: |
-          grep -rl 'Site.Language.Locale' themes/hugo-theme-stack/layouts | while read f; do
+          # .Site.Language.Locale -> .Language.Lang
+          grep -rl -- 'Site.Language.Locale' themes/hugo-theme-stack/layouts | while read f; do
             sed -i 's/\.Site\.Language\.Locale/.Language.Lang/g' "$f"
+          done
+          # .Language.Direction -> 字面量 ltr（中文站点方向为从左至右）
+          grep -rl -- '.Language.Direction' themes/hugo-theme-stack/layouts | while read f; do
+            sed -i 's/\.Language\.Direction/ltr/g' "$f"
           done
 
       - name: Setup Pages
